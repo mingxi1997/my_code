@@ -1,0 +1,282 @@
+Loading new_multi_classfication_320_new.pb
+NOTE: UFF has been tested with TensorFlow 1.14.0.
+WARNING: The version of TensorFlow installed on this system is not guaranteed to work with UFF.
+UFF Version 0.6.5
+=== Automatically deduced input nodes ===
+[name: "input_ids"
+op: "Placeholder"
+attr {
+  key: "dtype"
+  value {
+    type: DT_INT32
+  }
+}
+attr {
+  key: "shape"
+  value {
+    shape {
+      dim {
+        size: -1
+      }
+      dim {
+        size: 320
+      }
+    }
+  }
+}
+, name: "input_mask"
+op: "Placeholder"
+attr {
+  key: "dtype"
+  value {
+    type: DT_INT32
+  }
+}
+attr {
+  key: "shape"
+  value {
+    shape {
+      dim {
+        size: -1
+      }
+      dim {
+        size: 320
+      }
+    }
+  }
+}
+, name: "segment_ids"
+op: "Placeholder"
+attr {
+  key: "dtype"
+  value {
+    type: DT_INT32
+  }
+}
+attr {
+  key: "shape"
+  value {
+    shape {
+      dim {
+        size: -1
+      }
+      dim {
+        size: 320
+      }
+    }
+  }
+}
+]
+=========================================
+
+=== Automatically deduced output nodes ===
+[name: "output/ArgMax"
+op: "ArgMax"
+input: "output/Reshape"
+input: "output/ArgMax/dimension"
+attr {
+  key: "T"
+  value {
+    type: DT_FLOAT
+  }
+}
+attr {
+  key: "Tidx"
+  value {
+    type: DT_INT32
+  }
+}
+attr {
+  key: "output_type"
+  value {
+    type: DT_INT32
+  }
+}
+, name: "output/Max"
+op: "Max"
+input: "output/Softmax"
+input: "output/Max/reduction_indices"
+attr {
+  key: "T"
+  value {
+    type: DT_FLOAT
+  }
+}
+attr {
+  key: "Tidx"
+  value {
+    type: DT_INT32
+  }
+}
+attr {
+  key: "keep_dims"
+  value {
+    b: false
+  }
+}
+]
+==========================================
+
+Using output node output/ArgMax
+Using output node output/Max
+Converting to UFF graph
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_11/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_11/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_10/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_10/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_9/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_9/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_8/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_8/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_7/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_7/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_6/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_6/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_5/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_5/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_4/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_4/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_3/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_3/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_2/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_2/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_1/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_1/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_0/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/encoder/layer_0/attention/output/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: SquaredDifference yet.
+Converting bert/embeddings/LayerNorm/moments/SquaredDifference as custom op: SquaredDifference
+Warning: keepdims is ignored by the UFF Parser and defaults to True
+Warning: No conversion function registered for layer: Slice yet.
+Converting bert/embeddings/Slice as custom op: Slice
+Warning: No conversion function registered for layer: OneHot yet.
+Converting bert/embeddings/one_hot as custom op: OneHot
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_0/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: Cast yet.
+Converting bert/encoder/Cast as custom op: Cast
+Warning: No conversion function registered for layer: Fill yet.
+Converting bert/encoder/ones as custom op: Fill
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_0/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_1/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_1/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_2/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_2/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_3/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_3/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_4/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_4/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_5/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_5/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_6/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_6/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_7/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_7/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_8/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_8/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_9/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_9/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_10/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_10/attention/self/MatMul as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_11/attention/self/MatMul_1 as custom op: BatchMatMul
+Warning: No conversion function registered for layer: BatchMatMul yet.
+Converting bert/encoder/layer_11/attention/self/MatMul as custom op: BatchMatMul
+DEBUG [/usr/lib/python3.6/dist-packages/uff/converters/tensorflow/converter.py:96] Marking ['output/ArgMax', 'output/Max'] as outputs
+No. nodes: 1186
+UFF Output written to new_multi_classfication_320_new.uff
