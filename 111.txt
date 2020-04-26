@@ -2,4 +2,11 @@
  
  python3 -m  tf2onnx.convert   --input  resnet-101-tf.pb  --output resnet101.onnx --inputs input:0  --outputs resnet_v1_101/predictions/Softmax:0
  
- ./trtexec --onnx=resnet50.onnx    --shapes=\'input_tensor:0\':1x224x224x3      --fp16（可选）  --int8（可选）       
+ ./trtexec --onnx=resnet50.onnx    --shapes=\'input_tensor:0\':1x224x224x3      --fp16（可选）  --int8（可选）     
+ 
+ 
+resnet18.pb
+stylegan2_generator_trainingFalse.opt.pb
+new_multi_classfication_320_new.pb
+
+[([['Placeholder', '1', '224', '224', '3']], ['prob']), ([['dlatents_in', '1', '1', '16', '512']], ['images_out']), ([['input_ids', '-1', '320'], ['input_mask', '-1', '320'], ['segment_ids', '-1', '320']], ['output/ArgMax', 'output/Max'])]
