@@ -22,3 +22,7 @@ new_multi_classfication_320_new.pb
 3,3,resnet18_FP16.pb,prob,"[('Placeholder', ['1', '224', '224', '3'])]",0.0077657151222229005
 4,4,stylegan2_generator_trainingFalse.opt_FP16.pb,images_out,"[('dlatents_in', ['1', '1', '16', '512'])]",0.05358156681060791
 5,5,new_multi_classfication_320_new_FP16.pb,output/ArgMax,"[('input_ids', ['-1', '320']), ('input_mask', ['-1', '320']), ('segment_ids', ['-1', '320'])]",0.022248101234436036
+
+
+
+Note: CUDA graphs is not supported in this version.
