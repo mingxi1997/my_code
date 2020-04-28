@@ -93,4 +93,7 @@ transform_onnx.py   转换Pb 文件到onnx  读入的只有assingment.txt log �
 start_test.py       1、test onnx 只需要print command
                     2、test uff 只需要print command
 
-
+print格式按这样来：
+for i in range(len(table)):
+      if table.tasks[i].split('.')[1]=='pb':
+          table.loc[i,'step_time']=start_test_pb(table,i)
