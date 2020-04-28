@@ -1,5 +1,7 @@
+# encoding=utf-8
 import subprocess
 import re
+import os
 
 
 def get_name_size(data):
@@ -56,12 +58,22 @@ tasks=[task for task in tasks if task!='']
 #convert to uff and save log
 
 logs=[subprocess.run('convert-to-uff '+ task,shell=True,stdout=subprocess.PIPE).stdout.decode('utf-8') for task in tasks]
-
+logs_dir = './transform/'
+# create log directory
+if not os.path.exists(logs_dir):
+    os.makedirs(logs_dir)
 # get nodes and save
-all_nodes=[]
+all_nodes = []
 for i,log in enumerate(logs):
     input_list, output_list=get_name_size(log)
     all_nodes.append((input_list, output_list))
+    # write log
+    log_file = os.path.join(logs_dir,os.path.basename(tasks[i]).split('.')[0]+".txt")
+    if os.path.isfile(log_file):
+        os.remove(log_file)
+    with open(log_file, 'w') as f:
+        f.write(log)
+
 
 with open('all_nodes.txt','w')as f:
     f.write(str(all_nodes))
@@ -78,6 +90,7 @@ from tensorflow.python.platform import gfile
 
 
 for i,node in enumerate(all_nodes):
+    tf.reset_default_graph()
     inputs,outputs=node
     outputs_name=outputs[0]
     inputs_detail=[(input[0],get_num(input[1:])) for input in inputs]
@@ -107,4 +120,3 @@ for i,node in enumerate(all_nodes):
 
     with gfile.FastGFile(tasks[i][:-3]+"_FP16.pb",'wb') as f:
             f.write(trt_graph.SerializeToString())
-
