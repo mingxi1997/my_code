@@ -18,10 +18,15 @@ def wash(nas):
 input_nodes_shape=[wash(node) for node in all_nodes]
 
 n_tasks=[task[:-3]+'_FP16.pb' for task in tasks]
+n_tasks2=[task[:-3]+'.uff' for task in tasks]
+n_tasks3=[task[:-3]+'.onnx' for task in tasks]
+
 tasks.extend(n_tasks)
+tasks.extend(n_tasks2)
+tasks.extend(n_tasks3)
 table=pd.DataFrame()
 table['tasks']=tasks
-table['output_node']=output_node*2
-table['input_nodes']=input_nodes_shape*2
+table['output_node']=output_node*4
+table['input_nodes']=input_nodes_shape*4
 table['step_time']=0
 table.to_csv('table.csv')
