@@ -26,3 +26,50 @@ new_multi_classfication_320_new.pb
 
 
 Note: CUDA graphs is not supported in this version.
+
+
+
+
+all_nodes[0]
+Out[7]: ([['Placeholder', '1', '224', '224', '3']], ['prob'])
+
+all_nodes[1]
+Out[8]: ([['dlatents_in', '1', '1', '16', '512']], ['images_out'])
+
+all_nodes[2]
+Out[9]: 
+([['input_ids', '-1', '320'],
+  ['input_mask', '-1', '320'],
+  ['segment_ids', '-1', '320']],
+ ['output/ArgMax', 'output/Max'])
+
+all_nodes[0][0]
+Out[10]: [['Placeholder', '1', '224', '224', '3']]
+
+all_nodes[0][1]
+Out[11]: ['prob']
+
+outputs_name
+Out[12]: 'output/ArgMax'
+
+input_node_set
+Out[13]: ['import/input_ids:0', 'import/input_mask:0', 'import/segment_ids:0']
+
+output_node
+Out[14]: 'output/ArgMax'
+
+node[0]
+Out[15]: 
+[['input_ids', '-1', '320'],
+ ['input_mask', '-1', '320'],
+ ['segment_ids', '-1', '320']]
+
+[n[1:] for n in node[0]]
+Out[16]: [['-1', '320'], ['-1', '320'], ['-1', '320']]
+
+def wash(strings):
+    return [abs(int(strs)) for strs in strings]
+    
+
+[wash(n[1:]) for n in node[0]]
+Out[18]: [[1, 320], [1, 320], [1, 320]]
