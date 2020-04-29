@@ -87,8 +87,8 @@ Out[18]: [[1, 320], [1, 320], [1, 320]]
 
 python3 -m  tf2onnx.convert   --input  /root/xu/new_multi_classfication_320_new.pb  --output /root/xu/stylegan2_generator_trainingFalse.opt.onnx --inputs input_ids:0  --inputs input_mask:0 --inputs segment_ids:0  --outputs output/ArgMax:0
 
-./trtexec --onnx=/root/xu/new_multi_classfication_320_new.onnx    --shapes=\'input_ids:0\':1x320   --shapes=\'input_mask:0\':1x320 --shapes=\'segment_ids:0\':1x320   --fp16
-
+执行
+./trtexec --onnx=/root/xu/new_multi_classfication_320_new.onnx --shapes=input_ids:0:1x320,input_mask:0:1x320,segment_ids:0:1x320 --fp16
 transform_onnx.py   转换Pb 文件到onnx  读入的只有assingment.txt log 要保存
 start_test.py       1、test onnx 只需要print command
                     2、test uff 只需要print command
