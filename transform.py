@@ -1,7 +1,7 @@
-# encoding=utf-8
 import subprocess
 import re
 import os
+import pandas as pd
 
 
 def get_name_size(data):
@@ -53,7 +53,7 @@ def get_name_size(data):
 #get tasks 
 with open('assignment.txt','r')as f:
     tasks=f.read().split('\n')
-tasks=[task for task in tasks if task!='']
+tasks=[task for task in tasks if os.path.splitext(task)[1] == '.pb']
 
 #convert to uff and save log
 
@@ -68,7 +68,7 @@ for i,log in enumerate(logs):
     input_list, output_list=get_name_size(log)
     all_nodes.append((input_list, output_list))
     # write log
-    log_file = os.path.join(logs_dir,os.path.basename(tasks[i]).split('.')[0]+".txt")
+    log_file = os.path.join(logs_dir,os.path.basename(tasks[i]).split('.')[0]+"_uff.txt")
     if os.path.isfile(log_file):
         os.remove(log_file)
     with open(log_file, 'w') as f:
@@ -85,7 +85,6 @@ def get_num(text):
 import tensorflow as tf
 from tensorflow.python.compiler.tensorrt import trt_convert as trt
 from tensorflow.python.platform import gfile
-
 
 
 
@@ -120,3 +119,23 @@ for i,node in enumerate(all_nodes):
 
     with gfile.FastGFile(tasks[i][:-3]+"_FP16.pb",'wb') as f:
             f.write(trt_graph.SerializeToString())
+
+def pb2onnx_convert(all_nodes):
+    input_params = ""
+    for i, node in enumerate(all_nodes):
+        pb_name = tasks[i]
+        onnx_name = os.path.basename(pb_name).split('.')[0] + ".onnx"
+        inputs, outputs = node
+        input_params = ' --inputs ' + ',inputs='.join([i[0] + ":0" for i in inputs]).replace('-', "")
+        input_params = input_params.replace("inputs=", " --inputs ")
+        # print(input_params)
+        output_nodes_name = outputs[0]+":0"
+        # python3 -m  tf2onnx.convert   --input  /root/xu/new_multi_classfication_320_new.pb  --output /root/xu/stylegan2_generator_trainingFalse.opt.onnx --inputs input_ids:0  --inputs input_mask:0 --inputs segment_ids:0  --outputs output/ArgMax:0
+        command="python3 -m  tf2onnx.convert   --input  {}  --output {}{} --outputs {}".format(pb_name, onnx_name, input_params, output_nodes_name)
+        print(command)
+        log_pb2onnx = subprocess.run(command, shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
+        # write log
+        log_file = logs_dir+tasks[i][:-3]+'_onnx.txt'
+        with open(log_file, 'w') as f:
+            f.write(log_pb2onnx)
+pb2onnx_convert(all_nodes)
