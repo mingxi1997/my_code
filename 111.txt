@@ -98,3 +98,18 @@ print格式按这样来：
 for i in range(len(table)):
       if table.tasks[i].split('.')[1]=='pb':
           table.loc[i,'step_time']=start_test_pb(table,i)
+[04/29/2020-18:40:04] [I] Host latency
+[04/29/2020-18:40:04] [I] min: 8.56879 ms (end to end 16.8506 ms)
+[04/29/2020-18:40:04] [I] max: 12.4708 ms (end to end 24.3545 ms)
+[04/29/2020-18:40:04] [I] mean: 8.9788 ms (end to end 17.4304 ms)
+[04/29/2020-18:40:04] [I] median: 8.89679 ms (end to end 17.2542 ms)
+[04/29/2020-18:40:04] [I] percentile: 12.4213 ms at 99% (end to end 24.2829 ms at 99%)
+[04/29/2020-18:40:04] [I] throughput: 0 qps
+[04/29/2020-18:40:04] [I] walltime: 3.02572 s
+[04/29/2020-18:40:04] [I] GPU Compute
+[04/29/2020-18:40:04] [I] min: 8.53076 ms
+[04/29/2020-18:40:04] [I] max: 12.4322 ms
+[04/29/2020-18:40:04] [I] mean: 8.94128 ms
+[04/29/2020-18:40:04] [I] median: 8.85986 ms
+[04/29/2020-18:40:04] [I] percentile: 12.383 ms at 99%
+[04/29/2020-18:40:04] [I] total compute time: 3.01321 s
