@@ -5,7 +5,7 @@ import numpy as np
 import time
 import subprocess
 import  os
-
+import re
 table=pd.read_csv('table.csv')
 run_metadata = tf.RunMetadata()
 
@@ -14,7 +14,7 @@ def start_test_pb(table,seq,batch):
   input_pb=table.iloc[seq].tasks
 
   input_set=["import/"+input_node[0]+":0" for input_node in eval(table.iloc[seq].input_nodes)]
-  input_size=[input_node[1]*batch[i] for i,input_node in enumerate(eval(table.iloc[seq].input_nodes))]
+  input_size=[input_node[1]*batch for i,input_node in enumerate(eval(table.iloc[seq].input_nodes))]
 
   output_node=table.iloc[seq].output_node
 
@@ -61,10 +61,17 @@ def start_test_pb(table,seq,batch):
             end_time=time.time()
   return   (end_time-start_time)/100
 
+
+
+batch_sizes=table['batch_size']
 for i in range(len(table)):
-      if table.tasks[i].split('.')[1]=='pb':
-          table.loc[i,'step_time']=start_test_pb(table,i,[1])
-    
+      if table.tasks[i].split('.')[-1]=='pb':
+          table.loc[i,'step_time']=start_test_pb(table,i,batch_sizes[i])
+#      if table.tasks[i].split('.')[1]=='uff':
+#          table.loc[i,'step_time']=start_test_uff(table,i,[1])
+#      if table.tasks[i].split('.')[1]=='onnx':
+#          table.loc[i,'step_time']=start_test_onnx(table,i,batch_sizes[i])
+
 table.to_csv('table.csv')
 
 
