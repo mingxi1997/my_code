@@ -7,9 +7,10 @@ import subprocess
 import  os
 import re
 table=pd.read_csv('table.csv')
-run_metadata = tf.RunMetadata()
+
 
 def start_test_pb(table,seq,batch):
+  run_metadata = tf.RunMetadata()
   tf.reset_default_graph()
   input_pb=table.iloc[seq].tasks
 
