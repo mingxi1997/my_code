@@ -6,3 +6,117 @@ nvidia performance  nvidia 官网
 
 
 
+竞品厂商				竞品款型					关键竞争力					
+厂商	领域	当前动态	A国	型号	布署位置	使用场景	款型竞分优先级	款型备注	架构	关键器件	性能	使用场景	功耗能效	其他
+高优先级关注厂商														
+Nvidia	"云侧训练推理
+端侧推理
+自动驾驶"	"各领域均有产品，引领市场节奏
+近期关注T4、Xavier,2080ti"	Y	P4	CLOUD	云侧推理	高	成熟商用产品，竞争面广。同1910的主要对比款型						
+				T4	CLOUD	云侧推理	高	"N卡最新产品，未来主要竞争款型，性能高
+支持INT4，算力高"	"1、turing架构，引入turing tensor core，增强int的计算性能
+2、发布支持int4运算，但当前tensorRT 5.0不配套"	1、320个turing core, 2560个cuda core	"8.1 FP32 TFLOPS
+65 FP16 TFLOPS
+130 INT8 TOPS
+260 INT4 TOPS"	定位超大规模推理平台	"能效比较高
+boost 频率1590,功耗70w，功耗和温度达到阈值时都会触发限频
+功耗策略值得参考"	
+				DGX2	CLOUD	云侧训练	高	云上第一代产品， 增加HBM带宽，通过16个卡+12 nvswitch组建	" NVIDIA NVSwitch 网络架构进行模型并行训练
+NVIDIA 首款 2 petaFLOPS GPU 加速器采用的正是这种创新技术，其 GPU 间带宽高达 2.4 TB/"	"1、tensor core 640、cuda core 5120
+2、HBM2高于 Pascal GPU 1.5 倍的显存带宽(900GB/秒)"	 2 petaFLOPS	分布式训练	全新的最大节能模式。在此模式下，TeslaV100 以最大处理效率运行时，可提供高达 80% 的性能而只需一半的功耗	NVLINK技术， 2 倍于上一代的吞吐量。高达 8 块 Tesla V100加速器能以高达 300GB/ 秒的速度互联
+				jetson XAVIER	Device	端侧推理、生态开发者	高	SOC芯片如Drvier Xavier和pegasus（4 chips），供1951参考	"AGX平台基于Xavier发展而来，在自动驾驶场景的基础上拓展工业机器人、IOT以及医疗器械场景，对应为
+Driver AGX、jetson AGX、clara AGX"	"1、CPU:集成8*Carmel核，Specint2000 性能2700，Specint2006 160？（等效 8 core TaishanV110@2.0GHz？）
+2、AI计算：集成8个Volta core（SM），提供8*8*64*1.2G*2*2 = 20Tops算力；（512个CUDA core，提供1.2TFlops）
+集成2个DLAs（2*2048MAC），提供4096*2*1.2G = 10Tops算力
+3、ISP : 3840*2160*60*3 = 1.492992 Gpix/s
+"				"1、集成可编程的视觉处理加速单元，支持Stereo Disparity，光流，图像处理等加速；
+2、为满足自动驾驶安全需求，Xavier支持1个cluster（2核）的Carmel实现lockstep，系统总线和缓存支持ECC & 奇偶校验，支持BIST；支持任务在CPU、GPU、DLA之间分发；
+"
+				Drive Pegasus	Device	MDC	高	下一代自动驾驶，SOC为Xavier+post-volta，预计19年底发布	Xavier + Post-Volta					
+				RTX 2080 Ti	Device	消费者、端侧推理	高	消费级AI卡，1951规划新进入新领域的当前可见竞品，供芯片阶段分析参考	turing架构TU102，12nm	"4352 CUDA core
+11GB GDDR6
+14 Gbps显存速率"			13相供电	RTX-OPS 76T
+				V100	CLOUD	云侧训练	高	用于训练服务器，主流训练板卡	Volta 架构	"1、tensor core 640、cuda core 5120
+2、HBM2高于 Pascal GPU 1.5 倍的显存带宽(900GB/秒)"	"双精度  
+7 TeraFLOPS
+单精度 
+14 TeraFLOPS
+深度学习  
+112 TeraFLOPS"		全新的最大节能模式。在此模式下，TeslaV100 以最大处理效率运行时，可提供高达 80% 的性能而只需一半的功耗	
+				Titan RTX	Device	消费者、端侧推理	中	2080ti后Nv新一代最高显卡	turing架构TU102，12nm	24GB大显存，频率1770 MHz			13相imon Drmos电源，亚毫秒级电源管理	
+				 jetson TX2	Device	生态开发者	高	生态组的对比款型	Volta 架构	"1、tensor core 640、cuda core 5120
+2、HBM2高于 Pascal GPU 1.5 倍的显存带宽(900GB/秒)"	"双精度  
+7 TeraFLOPS
+单精度 
+14 TeraFLOPS
+深度学习  
+112 TeraFLOPS"		全新的最大节能模式。在此模式下，TeslaV100 以最大处理效率运行时，可提供高达 80% 的性能而只需一半的功耗	
+				jetson nano	Device	生态开发者	高	生态组对标的款型	turing架构TU102，12nm	24GB大显存，频率1770 MHz			13相imon Drmos电源，亚毫秒级电源管理	
+				RTX 3070	Device	消费者、端侧推理	中	V200 单p的主要对比款型，上市时间未定，测试阶段发布前比拼						
+				RTX 3080 TI	Device	消费者、端侧推理	中	V200 多p的主要对比款型，上市时间未定，测试阶段发布前比拼						
+Google	"云侧训练推理
+端侧推理"	"google的软件和系统强，关注云上TPU 的cloud service和 Cloud IoT Edge边缘设备
+近期关注TPU3.0、2019年底TPU4.0"	Y	 Edge TPU	Device	端侧推理、开发者	中	IoT边缘						
+				TPU v3.0	CLOUD	云侧训练	中	算力高，云上成熟应用						
+Intel	"
+云侧训练推理
+端侧推理
+自动驾驶"	"并购多家企业
+movidius嵌入式关注端侧
+mobileye关注自动驾驶
+Nervana关注数据中心
+国内领域当前同阿里有合作"	Y	 NNP L-1000 spring Hill for inference	CLOUD	云侧推理	低	能效比突出，暂未发布，10nm工艺路标延迟，预计2020H1发布					预计6T/W(INT8)	
+				 NNP I-1000 spring crest for training	CLOUD	云侧训练	低	暂未发布，路标延迟到预计2020						
+				Movidius Myriad x	Device	端侧推理	低	主要用于摄像头、无人机等场景				主要场景IPC、无人机		集成有视频、图片编码，没有解码能力
+				Mobileye EyeQ5	Device	MDC	低	主要定位为视觉处理芯片，关注MDC场景。预计2018年提供样片，2020年装备车上				视觉处理，MDC	12Tops功耗小于5w	"能提供20路高分辨率传感器，同时也支持安全能力
+"
+				Movidius X 计算棒2代	Device	端侧推理	低	USB接口，2018年底发布						
+寒武纪cambricon	"端侧推理
+云侧训练推理"	"IP发布1M支持手机、摄像头等端侧应用领域
+芯片18年预计发布MLU100/200 PCIE卡，应用于服务器，分别偏重推理和训练"	N	1H16\ 1H8  	Device	端侧推理（终端）	低	集成到970,寻求麒麟是否有一些测试结果						
+				MLU100	CLOUD	云侧推理	低	"宣称算力高，暂无板卡
+支持训练、推理，偏重推理，用于中小型服务器"						
+				MLU270	CLOUD	云侧推理/训练	中	19/5疑似MLU270的内部资料曝光，算力能效类似T4	16nm		int4 256Tops, int8 128Tops	疑似低精度训练领域	75w	内建视频解码单元
+habana	端侧推理/训练	"以色列的AI芯片厂商
+当前存在goya的推理系列和Gaudi训练系列
+2019年初推出推理芯片推广使用"	N （以色列）	goya HL-1000	CLOUD	云侧推理	中	2019年初发布芯片，外接供电，预计用于云侧推理。并将产品给合作厂商试用，未正式发布，从CLOUD了解京东在试用。	" Goya 推理平台
+兼容大多数框架"		"性能高
+ResNet-50: 15,012 images/second
+@100W (=150 images/sec/watt) "		能效比突出	"1、给出的示例中的batchsize为1,5，10 同常见的2n次方不同
+2、生态：集完全可编程的 Tensor Processing Core (TPC™)、开发工具、图书室和编译程序于一体，共同打造一个高性能且节能的全方位平台"
+				Gaudi	CLOUD	云侧训练	低	预计2019年下半年发布，当前无信息						
+Qualcomm	"端侧推理（移动端）
+自动驾驶"	关注845/850和手机侧芯片对比	Y	855	Device	端侧推理（终端）	低	应用于终端，宣称算力较高						
+				C-V2X	Device	MDC	低	"预计2019年投产
+蜂窝车联网(C-V2X)技术，基于这项技术能够实现车对车(V2V)、车对基础设施(V2I)、车对行人(V2P)的低时延通信"						
+				Cloud AI 100	CLOUD	云侧推理	中	2020年上市	7nm制程		350Tops		预计主打高能效比	预计构造良好的兼容性生态框架
+低优先级厂商														
+百度	云端推理训练	云端AI芯片“昆仑”，昆仑系列芯片预计2019年初投片	N	昆仑	CLOUD	云侧训练推理	低	“昆仑”为14nm 三星工艺，具备260Tops性能、512GB/s内存带宽、功耗100+瓦特，由几万个小核心构成。“昆仑”中包含训练芯片昆仑818-300，推理芯片昆仑818-100。昆仑系列芯片预计2019年初投片						
+比特大陆	端侧推理	按宣称芯片迭代周期短，近期关注新发布的开发者板BM1880	N	算丰：开发者板	Device	端侧推理、开发者	低	宣称迭代周期开发时间短						
+				算丰：计算棒	Device	端侧推理、开发者	低	宣称迭代周期开发时间短						
+Gyralcon	端侧推理	Lightspeeur 基于APiM架构，该架构使用内存作为人工智能处理单元，能效比较好	Y	Lightspeeur	Device	端侧推理	低	能效比较好	APiM架构，该架构使用内存作为人工智能处理单元，能效比较好				"低功耗为其亮点
+9.3Tops/W"	
+ARM	端侧、边缘	"划分高性能、普适、高能效几个维度
+general-purpose MLP： 18年计划推出Marvin系列， 19年Fenchurch
+hig efficiency MLP： 2020年推出"	N(英国)	Marvin	Device	端侧推理	低	当前未发布商用						
+APPLE	端侧推理（移动端）	关注A12和手机侧芯片对比	Y	A12、A12X	Device	移动终端	低	应用于终端，宣称算力较高						
+地平线	"自动驾驶
+端侧推理"	采用征程2.0处理器的matrix 1.0自动驾驶平台，北京车展展示了一台和奥迪合作的原型车	N	matrix 1.0	MDC	端侧推理	低	matrix 1.0自动驾驶，从目前marketing收集的信息，算力较为一般。暂不重点关注						
+AMD	"端侧推理
+云侧训练"	"2017 年 12 月 Intel 和 AMD 宣布将联手推出一款结合英特尔处理器和 AMD 图形单元的笔记本电脑芯片。 
+目前 AMD 拥有针对 AI 和机器学习的高性能 Radeon Instinc 加速卡"	Y	Radeon Instinct	Device	端侧推理	低	“Vega 7nm” GPU						
+Graphcore	"云侧计算
+自动驾驶"	"
+英国公司，预计应用于无人驾驶和云计算
+当前获得三星和博世风投"	N(英国)	colossus ipu	Device	MDC	低	"架构差异大，暂不重点关注
+其采用learning机制，learning = training+inference，期望在部署之后还能持续学习和进化"	"采用同构多核架构，超过 1000 个独立的处理器。
+采用片上 memory，无外挂 DRAM"					
+三星	端侧推理（移动端）	Galaxy S10有消息将会搭载三星首款自行研发的7nm AI芯片，新的处理器型号可能为Exynos 9820	N	Exynos 9820	Device	移动终端	低	当前暂未发布确实消息，待确认跟踪						
+Xilinx赛灵思	云侧训练推理	10月发布，包括6组产品：AI Core核心系列、VersalPrime基础系列、AI Edge边缘系列、AI RF射频系列、Versal Premium旗舰系列、HBM系列	Y	Alveo U200/250	Device	云侧训练推理	低	18年底推出U200/250/U280加速卡			"Alveo U250
+33.3 峰值 INT8 TOP
+77GB/s DDR 存储带宽
+38TB/s 内部 SRAM 带宽
+1,341,000 LUTs"			
+
+
+
