@@ -3,3 +3,11 @@
 3、模型的测试                  start_test_pb.py
 
 uff 测试 resnet50.v1   之前那个resnet50的uff是可以跑的  因为输入是224，224,3  ，对于uff模型，NHWC要加这个参数  --uffNHWC
+
+
+
+
+1\trtexec FP16/FP32/INT8   start_test_onnx.py
+                 
+                           start_test_uff.py
+2\ create table.py
