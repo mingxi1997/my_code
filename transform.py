@@ -111,7 +111,7 @@ for i,node in enumerate(all_nodes):
         converter = trt.TrtGraphConverter(
 
                     input_graph_def=frozen_graph,
-                    minimum_segment_size=3,
+                    minimum_segment_size=4,
                     precision_mode=precision,  #INT8/FP16/FP32
                     nodes_blacklist=[output_node]) #output nodes
         trt_graph = converter.convert()
