@@ -1,5 +1,4 @@
- ./trtexec --uff=e_trainingFalse.opt.uff --output=latents_out --uffInput=images_in,512,512,3     --uffNHWC（可选） --batch =8     --fp16（可选）  --int8（可选）    
- 
+ ./trtexec --uff=e_trainingFalse.opt.uff --output=latents_out --uffInput=images_in,512,512,3     --uffNHWC  --batch=8     --fp16 
  python3 -m  tf2onnx.convert   --input  resnet-101-tf.pb  --output resnet101.onnx --inputs input:0  --outputs resnet_v1_101/predictions/Softmax:0
  
  ./trtexec --onnx=resnet50.onnx    --shapes=\'input_tensor:0\':1x224x224x3      --fp16（可选）  --int8（可选）     
