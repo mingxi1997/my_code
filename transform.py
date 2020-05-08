@@ -3,7 +3,6 @@ import re
 import os
 import pandas as pd
 
-
 def get_name_size(data):
     input_list = []
     output_list = []
