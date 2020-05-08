@@ -11,3 +11,6 @@ uff 测试 resnet50.v1   之前那个resnet50的uff是可以跑的  因为输入
                  
                            start_test_uff.py
 2\ create table.py
+
+
+nvidia-docker run -it --rm --ipc=host --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -v /root:/workspace/data    inf_gpu_tool:v1.0 bash
