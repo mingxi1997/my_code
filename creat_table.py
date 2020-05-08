@@ -1,3 +1,4 @@
+
 import pandas as pd
 
 with open('all_nodes.txt','r')as f:
@@ -29,4 +30,5 @@ table['output_node']=output_node*4
 table['input_nodes']=input_nodes_shape*4
 table['step_time']=0
 table['batch_size']=1
+table['precision']='fp16'
 table.to_csv('table.csv')
