@@ -25,7 +25,7 @@ def get_means(log):
 
 
 
-def start_test_onnx(table, seq, batch_size):
+def start_test_onnx(table, seq, batch_size,precision):
     pb_name = table.iloc[seq].tasks
     input_nodes_str = table.iloc[seq].input_nodes
     input_nodes_names = eval(input_nodes_str)
@@ -35,7 +35,7 @@ def start_test_onnx(table, seq, batch_size):
     shapes = "--shapes=" + ','.join([n[0] + ":0:" + 'x'.join(multi_batch(n[1],batch_size)) for n in input_nodes_names]).replace("-", "")
     
     onnx_name = os.path.basename(pb_name).split('.')[0] + ".onnx"
-    command = '/usr/src/TensorRT-7.0.0.11/TensorRT-7.0.0.11/bin/trtexec --onnx={} {} --fp16'.format(onnx_name, shapes)
+    command = '/usr/src/tensorrt/bin/trtexec --onnx={} {} --{}'.format(onnx_name, shapes,precision)
   
 #    print(command)
 
@@ -56,7 +56,6 @@ for i in range(len(table)):
 #      if table.tasks[i].split('.')[1]=='uff':
 #          table.loc[i,'step_time']=start_test_uff(table,i,[1])
       if table.tasks[i].split('.')[-1]=='onnx':
-          table.loc[i,'step_time']=start_test_onnx(table,i,batch_sizes[i])
+          table.loc[i,'step_time']=start_test_onnx(table,i,batch_sizes[i],table.iloc[i]['precision'])
 
 table.to_csv('table.csv')
-
