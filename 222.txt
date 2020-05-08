@@ -14,3 +14,9 @@ uff 测试 resnet50.v1   之前那个resnet50的uff是可以跑的  因为输入
 
 
 nvidia-docker run -it --rm --ipc=host --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -v /root:/workspace/data    inf_gpu_tool:v1.0 bash
+
+
+10.136.165.21
+hisilicon12#$
+
+19979476HEhe@
