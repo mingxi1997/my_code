@@ -27,7 +27,7 @@ class TableManager(object):
         self.tasks = table.tasks.values.tolist()
         for i in range(len(table)):
             batches_list = []
-            str_batches = table.iloc[i].batch_size
+            str_batches = str(table.iloc[i].batch_size)
             batches = str_batches.split(',')
             for batch in batches:
                 batches_list.append(batch.strip(' '))
@@ -67,10 +67,10 @@ class TableManager(object):
         table['batch_size'] = 1
         table['precision'] = 'fp16'
         for index in range(len(self.tasks)):
-               table.loc[len(table)] = [self.tasks[index], self.output_node[index], self.input_nodes_shape[index],
-                                             '0', '1', '']
-               table.loc[len(table)] = [self.tasks[index][:-3]+"_fp16.pb", self.output_node[index], self.input_nodes_shape[index],
-                                             '0', '1', 'fp16']
+               table.loc[len(table)] = [self.tasks[index], self.output_node[index], self.input_nodes_shape[index],'0', '1', 'fp32']
+               for precision in self.precisions[index]:
+                   if precision=='fp16':
+                       table.loc[len(table)] = [self.tasks[index][:-3]+"_"+precision+".pb", self.output_node[index], self.input_nodes_shape[index],'0', '1', precision]
         for index in range(len(self.tasks)):
             for precision in self.precisions[index]:
                 for batch in self.batches[index]:
@@ -142,7 +142,12 @@ class TestManager(object):
        # table = pd.read_csv('table.csv')
         for i in range(len(self.table)):
             if self.table.tasks[i].split('.')[-1] == 'pb':
-                result = self.start_test_pb(self.table, i)
+                print('*'*30 +"starting test {} ...".format(self.table.tasks[i]))
+                try:
+                  result = self.start_test_pb(self.table, i)
+                except Exception as e:
+                  print("*"*30+"error info:{}".format(e))
+                  continue
                 self.table.loc[i,'step_time']=result
                 print('*' * 30)
                 print(self.table.tasks[i])
@@ -161,18 +166,18 @@ class TestManager(object):
         precision = table.iloc[seq].precision
         input_nodes_str = table.iloc[seq].input_nodes
         input_nodes_names = eval(input_nodes_str)
-
-        def multi_batch(strings, batch_size):
-            strings[0] = str(int(strings[0]) * batch_size)
-            return strings
-
-        shapes = "--shapes=" + ','.join(
-            [n[0] + ":0:" + 'x'.join(multi_batch(n[1], batch_size)) for n in input_nodes_names]).replace("-", "")
+        def multi_batch(strings,batch_size):
+              strings[0]=str(int(strings[0])*batch_size)
+              return strings
+        shapes = "--shapes=" + ','.join([n[0] + ":0:" + 'x'.join(multi_batch(n[1],batch_size)) for n in input_nodes_names]).replace("-", "")
 
         # onnx_name = os.path.basename(onnx_name).split('.')[0] + ".onnx"
-        command = self.exec_root + 'trtexec --onnx={} {} --{}'.format(onnx_name, shapes, precision)
+        command = '/usr/src/tensorrt/bin/trtexec --onnx={} {} --{}'.format(onnx_name, shapes,precision)
+        # command = self.exec_root + 'trtexec --onnx={} {} --{}'.format(onnx_name, shapes, precision)
 
-        #    print(command)
+        print('*' * 30)
+        print(command)
+        print('*' * 30)
 
         log_onnxtest = subprocess.run(command, shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
         # save means
@@ -185,7 +190,10 @@ class TestManager(object):
    #     table = pd.read_csv('table.csv')
         for i in range(len(self.table)):
             if self.table.tasks[i].split('.')[-1] == 'onnx':
-                self.table.loc[i, 'step_time'] = self.start_test_onnx(self.table, i)
+                print('*'*30 +"starting test {} ...".format(self.table.tasks[i]))
+                str_result=self.start_test_onnx(self.table, i)
+                float_reuslt =str(float(str_result)/1000.0)
+                self.table.loc[i, 'step_time'] = float_reuslt
 
    #     table.to_csv('table.csv',index=False)
 
@@ -220,14 +228,21 @@ class TestManager(object):
    #     table = pd.read_csv('table.csv')
         for i in range(len(self.table)):
             if self.table.tasks[i].split('.')[-1] == 'uff':
-                self.table.loc[i, 'step_time'] = self.start_test_uff(self.table, i)
+                print('*'*30 +"starting test {} ...".format(self.table.tasks[i]))
+                str_result=self.start_test_uff(self.table, i)
+                float_reuslt =str(float(str_result)/1000.0)
+                self.table.loc[i, 'step_time'] = float_reuslt
     #    table.to_csv('table.csv',index=False)
     def save_table(self):
         self.table.to_csv('table.csv',index=False)
 if __name__ == "__main__":
 
     test = TestManager()
-    test.test_pb()
+    print('*'*30 +"starting test onnx ...")
     test.test_onnx()
+    print('*'*30 +"starting test uff ...")
     test.test_uff()
+    print('*'*30 +"starting test pb ...")
+    test.test_pb()
+    print('*'*30 +"starting save table ...")
     test.save_table()
