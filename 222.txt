@@ -20,3 +20,7 @@ nvidia-docker run -it --rm --ipc=host --shm-size=1g --ulimit memlock=-1 --ulimit
 hisilicon12#$
 
 19979476HEhe@
+
+
+
+https://github.com/dmlc/mxnet-memonger
