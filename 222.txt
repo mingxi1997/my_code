@@ -25,3 +25,7 @@ hisilicon12#$
 
 https://github.com/dmlc/mxnet-memonger
 https://arxiv.org/pdf/1604.06174.pdf
+
+
+
+https://mxnet.apache.org/api/faq/env_var
