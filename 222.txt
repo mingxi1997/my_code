@@ -35,3 +35,24 @@ https://mxnet.apache.org/api/faq/env_var
 MXNET_BACKWARD_DO_MIRROR 
 
 MXNET_MEMORY_OPT
+
+
+
+
+
+
+export MXNET_BACKWARD_DO_MIRROR=1
+#unset MXNET_BACKWARD_DO_MIRROR
+#export MXNET_MEMORY_OPT=0
+#unset MXNET_MEMORY_OPT
+python  train_imagenet.py --network resnet --num-layers 50  --batch-size 32 --gpus 0  --data-train /workspace/data/imagenet_mxnet/train.rec   --dtype float16
+
+
+https://github.com/apache/incubator-mxnet/blob/master/example/image-classification/train_imagenet.py
+
+
+
+
+
+
+
