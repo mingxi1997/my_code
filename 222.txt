@@ -53,6 +53,6 @@ https://github.com/apache/incubator-mxnet/blob/master/example/image-classificati
 
 
 
-
+https://developer.nvidia.com/cuda-92-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604
 
 
