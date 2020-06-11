@@ -56,3 +56,23 @@ https://github.com/apache/incubator-mxnet/blob/master/example/image-classificati
 https://developer.nvidia.com/cuda-92-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604
 
 
+#zx add
+profiler.set_config(profile_all=True,
+                    aggregate_stats=True,
+                    continuous_dump=True,
+                    filename='profile_output.json')
+profiler.set_state('run')
+'''
+# train with the same
+resnet_model.fit(train_iter,
+                 optimizer='sgd',
+                 optimizer_params={'learning_rate': 0.01},
+                 eval_metric='acc',
+                 batch_end_callback=mx.callback.Speedometer(batch_size, 1),
+                 num_epoch=10)
+'''
+#zx add
+mx.nd.waitall()
+profiler.set_state('stop')
+#profiler.dump()
+print(profiler.dumps())
