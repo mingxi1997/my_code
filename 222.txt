@@ -76,3 +76,5 @@ mx.nd.waitall()
 profiler.set_state('stop')
 #profiler.dump()
 print(profiler.dumps())
+
+https://pypi.tuna.tsinghua.edu.cn/packages/ef/4d/7ace07832a63d143c04bd29b5850aad1889213833672b1b3f2f0150d9b66/mxnet_cu102-1.6.0-py2.py3-none-manylinux1_x86_64.whl
