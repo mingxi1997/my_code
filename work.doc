@@ -1,0 +1,44 @@
+6月8日-6月12日周汇报：
+一、	算法研究方向：
+1、	熟悉了解Mxnet框架的基本使用
+2、	配置了Mxnet conda环境
+3、	基于Mxnet设计了resnet50网络结构
+4、	在CPU上测试了Mxnet resnet50框架下内存复用 recompute算法的效果
+5、	在2080Ti上测试了Mxnet resnet50框架下内存复用 recompute算法的效果
+6、	根据测试结果及查看源码，分析了内存复用的机制。
+二、	竞品测试方向：
+1、	基于tensorflow 测试了SSD320,resnet50_tf,bert在dgx2上不同参数下的性能。
+2、	基于pytorch 测试了bert在dgx2上不同参数下的性能。
+
+
+6月8日前算法工作总结：
+1、	基于TF2.0 框架、pytorch框架下resnet50 在TPU上不同数字格式下的性能测试。
+2、	对tensorrt的调研，基于Mnist数据集的lenet使用tensorrt加速的原理机制分析。
+3、	使用tensorrt对tensorflow pb文件分别就uff、tftrt、onnx三种渠道对bert_base、stylegan2、resnet18、resnet50等模型进行了模型转换和模型加速，并测试了相关性能。
+4、	调研了DALI数据读取加速框架，并自定义5层卷积网络，测试了浅网络下的模型训练加速情况，和resnet50深网络下的模型训练加速情况进行了对比。对DALI加速的效果和使用场景进行了分析。
+5、	完成tensorflow pb文件的tensorrt自动化部署和多参数的一键测试工程。该工程可以实现tensorflow pb模型的基于tensorrt的uff、tftrt、onnx的模型转化、模型部署、模型测试。支持多种参数自定义，并可自动过滤错误设置。
+6、	完成了4月份调研报告。就tensorflow新出的bloat16数字格式进行了深入的研究，包括详细的原理分析、性能测试、未来展望等方面。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
