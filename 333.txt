@@ -1,0 +1,19 @@
+TFLMS
+论文：https://arxiv.org/pdf/1807.02037.pdf
+
+https://github.com/IBM/tensorflow-large-model-support
+https://blog.csdn.net/Crisholic/article/details/106660501
+
+
+一、原理
+1）工作原理
+2）做swap in和swap out的条件
+
+二、实验
+ 1、tensorflow 1.5+TFLMSv1版本，选择resnet or bert （用nvidia官网脚本https://github.com/NVIDIA/DeepLearningExamples）,打开、关闭情况下对比
+  1）使能方法
+  2) tensorboard 图上看swapin和out算子插入位置
+  3) 相同batch下对比性能和内存占用（包括gpu和host）的变化
+  4）最大batch 的对比
+ 2、tensorflow 1.5+TFLMSv2版本，和上面做类似的验证 
+ 3、tensorflow 2+v2版本，和上面做类似的验证 
