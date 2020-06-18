@@ -17,3 +17,6 @@ https://blog.csdn.net/Crisholic/article/details/106660501
   4）最大batch 的对比
  2、tensorflow 1.5+TFLMSv2版本，和上面做类似的验证 
  3、tensorflow 2+v2版本，和上面做类似的验证 
+
+
+https://devblogs.nvidia.com/speeding-up-deep-learning-inference-using-tensorflow-onnx-and-tensorrt/
