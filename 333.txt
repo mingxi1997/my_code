@@ -20,3 +20,14 @@ https://blog.csdn.net/Crisholic/article/details/106660501
 
 
 https://devblogs.nvidia.com/speeding-up-deep-learning-inference-using-tensorflow-onnx-and-tensorrt/
+
+
+本周任务报告：
+算法研究
+1、mxnet recomputation 机制研究工作的任务总结（已完成）
+2、SWAP机制论文的阅读，tf large model support的调研，conda环境下tflms及tf2.1的配置（进行中）
+3、tf2.1 环境下resnet50 的性能测试。（进行中）
+4、conda环境下打开tflms开关下，tf2.1的resnet50性能测试。（进行中）
+
+竞品测试：
+Tf1.14  resnet50 256 在v100*8上的性能测试，目前测试每个epoch约12min,和官网提供数据相差较大，正在查找原因。
