@@ -31,3 +31,4 @@ https://devblogs.nvidia.com/speeding-up-deep-learning-inference-using-tensorflow
 
 竞品测试：
 Tf1.14  resnet50 256 在v100*8上的性能测试，目前测试每个epoch约12min,和官网提供数据相差较大，正在查找原因。
+https://pan.baidu.com/s/1MGImmJxyvYH2RYJlqtyEQw?errno=0&errmsg=Auth%20Login%20Sucess&&bduss=&ssnerror=0&traceid=
