@@ -41,3 +41,8 @@ max120	4ms/sample	10888	no	250
 120	4ms/sample	10920	yes	250
 240	29ms/sample	10920	yes	34
 170	19ms/sample	10920	yes	53
+
+
+10.90.16.178 huawei@12#$
+bash /home/xu/ docker_for_pytorch.sh
+cd /data/package/dllogger-master && python setup.py install
