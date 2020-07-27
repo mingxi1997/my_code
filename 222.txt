@@ -81,4 +81,17 @@ https://pypi.tuna.tsinghua.edu.cn/packages/ef/4d/7ace07832a63d143c04bd29b5850aad
 
 
 python3 train_imagenet.py --benchmark 1 --gpus 0 --network resnet --batch-size 54  --image-shape 3,299,299 --num-epochs 1 --kv-store device
+Resnet50 mxnet实测结果
+Batch_size=54
+参    数	内存使用	单次迭代时间
+MXNET_BACKWARD_DO_MIRROR=0
+MXNET_MEMORY_OPT=0	10825 MB	0.783
+MXNET_BACKWARD_DO_MIRROR=1
+MXNET_MEMORY_OPT=0	7815MB	0.818
+MXNET_BACKWARD_DO_MIRROR=1
+MXNET_MEMORY_OPT=1	7287 MB	0.820
+MXNET_BACKWARD_DO_MIRROR=0
+MXNET_MEMORY_OPT=1	7287 MB	0.819
+
+
 
