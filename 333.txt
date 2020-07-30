@@ -46,3 +46,8 @@ max120	4ms/sample	10888	no	250
 10.90.16.178 huawei@12#$
 bash /home/xu/ docker_for_pytorch.sh
 cd /data/package/dllogger-master && python setup.py install
+
+
+https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT
+NVIDIA DGX-1 (8x V100 32G)
+https://github.com/NVIDIA/apex
